@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth for the Blue - 海洋ごみ問題に取り組む学生キャンペーン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg');
+            background-size: 1000px 100px;
+        }
+        .wave.wave1 {
+            animation: animate 30s linear infinite;
+            z-index: 1000;
+            opacity: 1;
+            animation-delay: 0s;
+            bottom: 0;
+        }
+        .wave.wave2 {
+            animation: animate2 15s linear infinite;
+            z-index: 999;
+            opacity: 0.5;
+            animation-delay: -5s;
+            bottom: 10px;
+        }
+        .wave.wave3 {
+            animation: animate 30s linear infinite;
+            z-index: 998;
+            opacity: 0.2;
+            animation-delay: -2s;
+            bottom: 15px;
+        }
+        @keyframes animate {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1000px; }
+        }
+        @keyframes animate2 {
+            0% { background-position-x: 0; }
+            100% { background-position-x: -1000px; }
+        }
+    </style>
+</head>
+<body class="bg-blue-50 font-sans">
+    <header class="bg-blue-600 text-white py-4 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Youth for the Blue</h1>
+            <ul class="flex space-x-4">
+                <li><a href="#about" class="hover:text-blue-200 transition duration-300">About</a></li>
+                <li><a href="#activities" class="hover:text-blue-200 transition duration-300">活動</a></li>
+                <li><a href="#news" class="hover:text-blue-200 transition duration-300">ニュース</a></li>
+                <li><a href="#contact" class="hover:text-blue-200 transition duration-300">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class='flex justify-center'>
+        <a href='index.html' class='mx-4'>案1</a>
+        <a href='index2.html' class='mx-4'>案2</a>
+        <a href='index3.html' class='mx-4'>案3</a>
+        <a href='index4.html' class='mx-4'>案4</a>
+        <a href='index5.html' class='mx-4'>案5</a>
+    </div>
+
+    <main class="container mx-auto mt-8 px-4">
+        <section id="hero" class="text-center py-20 relative overflow-hidden">
+            <h2 class="text-4xl font-bold mb-4 text-blue-800">海の未来を、私たちの手で</h2>
+            <p class="text-xl mb-8 text-blue-600">Youth for the Blue は、学生主導の海洋ごみ問題解決キャンペーンです</p>
+            <a href="#join" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300 inline-block">参加する</a>
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </section>
+
+        <section id="about" class="my-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-800">Youth for the Blueとは</h2>
+            <p class="text-lg mb-4">「Youth for the Blue」通称Y4Bは、近年大きな問題となっている海洋ごみ問題に、学生を中心とした若者が主体的に取り組むキャンペーンです。私たちは、この社会問題に対する興味関心を高め、自分たちのアクションを広げることで、海の未来を変えていきます。</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-700">海洋ごみの現状</h3>
+                <p class="mb-4">私たちに多くの恵みを与え、生命の生存の基盤ともなっている海。それが今、危機に瀕しています。毎年約800万トンものごみが海に捨てられ、2025年には海中のごみの量が魚の重さを超えると言われています。そして、海洋ごみの約80%は街から流出しており、都市部に住む人たちとも無関係ではありません。</p>
+                <a href="#" class="text-blue-500 hover:underline">詳しくはこちら</a>
+            </div>
+        </section>
+
+        <section id="activities" class="my-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-800">私たちの活動</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-700">ビーチクリーン</h3>
+                    <p>定期的に海岸清掃を行い、直接海洋ごみ問題に取り組んでいます。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-700">啓発活動</h3>
+                    <p>学校や地域でワークショップを開催し、海洋ごみ問題の認知度を高めています。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="my-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-800">ニュース</h2>
+            <ul class="space-y-4">
+                <li class="bg-white p-4 rounded-lg shadow-md">
+                    <span class="text-blue-500 font-semibold">2024/05/01</span>
+                    <p class="text-lg">夏のビーチクリーンキャンペーン開催決定！</p>
+                </li>
+                <li class="bg-white p-4 rounded-lg shadow-md">
+                    <span class="text-blue-500 font-semibold">2024/04/15</span>
+                    <p class="text-lg">海洋プラスチック問題に関する講演会を実施しました。</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="contact" class="my-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-800">お問い合わせ</h2>
+            <p class="mb-4">お問い合わせはInstagramやXからお願いします</p>
+            <div class="flex space-x-4">
+                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">Instagram</a>
+                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">X (Twitter)</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-blue-800 text-white py-8 mt-16">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Youth for the Blue. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            anime({
+                targets: '#hero h2, #hero p, #hero a',
+                translateY: [50, 0],
+                opacity: [0, 1],
+                delay: anime.stagger(200),
+                easing: 'easeOutQuad',
+                duration: 1000
+            });
+        });
+    </script>
+</body>
+</html>
