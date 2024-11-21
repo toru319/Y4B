@@ -6,6 +6,10 @@
     <title>Y4B - Youth for the Blue</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
+        html, body {
+          width: 100%;
+          overflow-x: hidden;
+        }
         body {
             background-color: #1e3a8a;
             overflow: hidden;
@@ -36,10 +40,10 @@
             }
         }
         .content {
+            overflow-y: auto;
             position: relative;
             z-index: 10;
             height: 100vh;
-            overflow: hidden;
         }
         .section {
             position: absolute;
