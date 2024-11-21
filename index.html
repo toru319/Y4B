@@ -118,6 +118,25 @@
     </div>
 
     <script>
+        function enableTouchScroll(element) {
+          if ('ontouchstart' in window) {
+            let scrollStartPos = 0;
+    
+            element.addEventListener('touchstart', function(event) {
+              scrollStartPos = this.scrollTop + event.touches[0].pageY;
+            }, false);
+
+            element.addEventListener('touchmove', function(event) {
+              this.scrollTop = scrollStartPos - event.touches[0].pageY;
+              event.preventDefault();
+            }, false);
+          }
+        }
+
+    // コンテンツを含む要素に適用
+    const contentElement = document.querySelector('.content');
+    enableTouchScroll(contentElement);
+        
         document.addEventListener('DOMContentLoaded', () => {
             const sections = Array.from(document.querySelectorAll('.section'));
             let currentSectionIndex = 0;
