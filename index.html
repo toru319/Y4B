@@ -6,10 +6,6 @@
     <title>Y4B - Youth for the Blue</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        html, body {
-          width: 100%;
-          overflow-x: hidden;
-        }
         body {
             background-color: #1e3a8a;
             overflow: hidden;
@@ -59,7 +55,17 @@
             align-items: center;
             padding: 2rem;
             text-align: center;
+            min-height: 100vh;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
         }
+
+        @media (max-width: 767px) {
+  .section {
+    height: auto;
+    min-height: 100vh;
+  }
+}
         .section.hidden-up {
             transform: translate(-50%, -150%);
             opacity: 0;
@@ -122,64 +128,63 @@
     </div>
 
     <script>
-        function enableTouchScroll(element) {
-          if ('ontouchstart' in window) {
-            let scrollStartPos = 0;
-    
-            element.addEventListener('touchstart', function(event) {
-              scrollStartPos = this.scrollTop + event.touches[0].pageY;
-            }, false);
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = Array.from(document.querySelectorAll('.section'));
+  let currentSectionIndex = 0;
+  let isScrolling = false;
+  let touchStartY = 0;
 
-            element.addEventListener('touchmove', function(event) {
-              this.scrollTop = scrollStartPos - event.touches[0].pageY;
-              event.preventDefault();
-            }, false);
-          }
-        }
+  function showSection(index) {
+    sections.forEach((section, i) => {
+      if (i < index) {
+        section.classList.add('hidden-up');
+        section.classList.remove('hidden-down');
+      } else if (i > index) {
+        section.classList.remove('hidden-up');
+        section.classList.add('hidden-down');
+      } else {
+        section.classList.remove('hidden-up', 'hidden-down');
+      }
+    });
+  }
 
-    // コンテンツを含む要素に適用
-    const contentElement = document.querySelector('.content');
-    enableTouchScroll(contentElement);
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = Array.from(document.querySelectorAll('.section'));
-            let currentSectionIndex = 0;
-            let isScrolling = false;
+  function handleScroll(delta) {
+    if (isScrolling) return;
+    isScrolling = true;
 
-            function showSection(index) {
-                sections.forEach((section, i) => {
-                    if (i < index) {
-                        section.classList.add('hidden-up');
-                        section.classList.remove('hidden-down');
-                    } else if (i > index) {
-                        section.classList.remove('hidden-up');
-                        section.classList.add('hidden-down');
-                    } else {
-                        section.classList.remove('hidden-up', 'hidden-down');
-                    }
-                });
-            }
+    if (delta > 0 && currentSectionIndex < sections.length - 1) {
+      currentSectionIndex++;
+    } else if (delta < 0 && currentSectionIndex > 0) {
+      currentSectionIndex--;
+    }
 
-            function handleScroll(event) {
-                if (isScrolling) return;
-                isScrolling = true;
+    showSection(currentSectionIndex);
+    setTimeout(() => {
+      isScrolling = false;
+    }, 500);
+  }
 
-                if (event.deltaY > 0 && currentSectionIndex < sections.length - 1) {
-                    currentSectionIndex++;
-                } else if (event.deltaY < 0 && currentSectionIndex > 0) {
-                    currentSectionIndex--;
-                }
+  // マウスホイールイベント
+  window.addEventListener('wheel', (event) => {
+    handleScroll(event.deltaY);
+  });
 
-                showSection(currentSectionIndex);
+  // タッチイベント
+  window.addEventListener('touchstart', (event) => {
+    touchStartY = event.touches[0].clientY;
+  });
 
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 500);
-            }
+  window.addEventListener('touchmove', (event) => {
+    const touchEndY = event.touches[0].clientY;
+    const delta = touchStartY - touchEndY;
+    if (Math.abs(delta) > 50) { // スワイプの閾値
+      handleScroll(delta);
+      touchStartY = touchEndY;
+    }
+  });
 
-            window.addEventListener('wheel', handleScroll);
-            showSection(currentSectionIndex);
-        });
+  showSection(currentSectionIndex);
+});
 
         // 水滴のエフェクトを制御するJavaScript
         const rippleContainer = document.getElementById('ripple-container');
