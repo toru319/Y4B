@@ -3,218 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y4B - Youth for the Blue</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #1e3a8a;
-            overflow: hidden;
-        }
-        #ripple-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .water-drop {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.6);
-            animation: ripple 3s ease-out;
-        }
-        @keyframes ripple {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-        .content {
-            overflow-y: auto;
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-        }
-        .section {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            opacity: 1;
-            transition: all 0.5s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            text-align: center;
-            min-height: 100vh;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-        }
+    <meta name="description" content="Youth for the Blue（Y4B）は、海洋ごみ問題に取り組む若者主体のキャンペーンです。">
+    <title>Youth for the Blue - 若い世代から、海の未来を変える！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-        @media (max-width: 767px) {
-  .section {
-    height: auto;
-    min-height: 100vh;
-  }
-}
-        .section.hidden-up {
-            transform: translate(-50%, -150%);
-            opacity: 0;
-        }
-        .section.hidden-down {
-            transform: translate(-50%, 150%);
-            opacity: 0;
-        }
-    </style>
 </head>
-
-<body class="text-white">
-    <div id="ripple-container"></div>
+<body class="bg-gradient-to-b from-blue-100 to-blue-200 min-h-screen">
+    <nav class="bg-gradient-to-r from-blue-500 to-teal-400 text-white fixed w-full z-50 top-0">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <!-- ロゴ部分 -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-wider">
+                        Youth for the Blue
+                    </h1>
+                </div>
     
-    <div class="content">
-        <section id="main" class="section">
-            <h1 class="text-4xl font-bold mb-4">Youth for the Blue</h1>
-            <p class="text-xl mb-8">若い世代から、海の未来を変える！</p>
-        </section>
-
-        <section id="about" class="section hidden-down">
-            <h2 class="text-3xl font-bold mb-4">Youth for the Blueとは</h2>
-            <p class="text-lg mb-4">海洋ごみ問題に対し、若者が主体となって取り組むキャンペーンです！</p>
-            <h4 class="text-2xl font-bold my-4">目的</h4>
-            <p class="text-lg mb-4">海洋ごみ問題という身近な環境問題に対して、大学生を中心とした若者がアクションを起こし、社会的な関心を高めることを目指しています。</p>
-        </section>
-
-        <section id="current-situation" class="section hidden-down">
-            <h2 class="text-3xl font-bold mb-4">海ごみの現状</h2>
-            <p class="text-lg mb-4">毎年、約800万トンものごみが海に捨てられ、2025年には海中のごみの量が魚の重さを超えると言われています。<br>そして、海洋ごみの7~8割が街から流出しており、都市部に住む人たちとも無関係ではありません。</p>
-        </section>
-
-        <section id="activities" class="section hidden-down">
-            <h2 class="text-3xl font-bold mb-4">Youth for the Blueの活動</h2>
-            <p class="text-lg mb-4">主に学生たちが主体となって清掃活動を行ったり、国際プラスチック条約に関して環境省への提言を行なっています。</p>
-            <p class="mb-4">詳しくは<a class="text-blue-500" href="#">こちら</a></p>
-        </section>
-
-        <section id="sponsors" class="section hidden-down">
-            <h2 class="text-3xl font-bold mb-4">協賛</h2>
-            <p class="text-lg mb-4">私たちの活動は、以下の企業や団体からのご支援により成り立っています</p>
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <img src="data:image/png;base64,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" alt="画像1の説明" class="w-full sm:w-1/3 h-48 object-contain">
-                <img src="https://www.nippon-foundation.or.jp/wp-content/uploads/2020/04/wha_pro_umi_sea_05.png" alt="画像2の説明" class="w-full sm:w-1/3 h-48 object-contain">
+                <!-- PC用ナビゲーション -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">ホーム</a>
+                    <a href="#" class="px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">活動内容</a>
+                    <a href="#" class="px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">イベント</a>
+                    <a href="#" class="px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">ブログ</a>
+                    <a href="#" class="px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">お問い合わせ</a>
+                </div>
+    
+                <!-- モバイル用メニューボタン -->
+                <button class="lg:hidden p-2 rounded-md hover:bg-blue-400 transition-colors duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-        </section>
-
-        <section id="contact" class="section hidden-down">
-            <h2 class="text-3xl font-bold mb-4">お問い合わせ</h2>
-            <p class="text-lg mb-4">ご質問やご意見がございましたら、以下の連絡先までお気軽にお問い合わせください</p>
-            <div class="flex justify-center space-x-4">
-                <a href="#" class="text-blue-500 hover:text-blue-600">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="#" class="text-blue-500 hover:text-blue-600">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-                </a>
-            </div>
-        </section>
+        </div>
+    </nav>
+    
+    <!-- モバイル用メニュー（デフォルトは非表示） -->
+    <div class="hidden lg:hidden fixed top-20 left-0 w-1/4 ml-auto right-0 bg-gradient-to-r from-blue-500 to-teal-400 text-white text-xs z-40">
+        <div class="px-2 pt-2 pb-3 space-y-1 flex flex-col items-end">
+            <a href="#" class="inline-block px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">ホーム</a>
+            <a href="#" class="inline-block px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">活動内容</a>
+            <a href="#" class="inline-block px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">イベント</a>
+            <a href="#" class="inline-block px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">ブログ</a>
+            <a href="#" class="inline-block px-3 py-2 hover:bg-blue-400 rounded-md transition-colors duration-300">お問い合わせ</a>
+        </div>
     </div>
 
+    <div class="py-10"></div>
+
+    <header class="bg-gradient-to-r from-blue-500 to-teal-400 text-white relative overflow-hidden">
+      <div class="py-24 md:py-32 lg:py-64">
+        <div id="particles-js" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+          <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold text-center mb-4">Youth for the Blue</h1>
+          <p class="text-xl md:text-2xl lg:text-3xl text-center font-light">若い世代から、海の未来を変える！</p>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full block">
+          <path fill="#fff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,117.3C960,107,1056,149,1152,154.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-lg p-6 sm:p-8 md:p-10 mb-12" data-aos="fade-up">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-blue-600">Youth for the Blueとは</h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                「Youth for the Blue」通称Y4Bは、近年大きな問題となっている海洋ごみ問題に、学生を中心とした若者が主体的に取り組むキャンペーンです。私たちは、この社会問題に対する興味関心を高め、自分たちのアクションを広げることで、海の未来を変えていきます。
+            </p>
+        </section>
+
+        <section id="activity-cards" class="grid md:grid-cols-2 gap-8 mb-12"></section>
+
+        <section class="bg-white rounded-lg shadow-lg p-6 sm:p-8 md:p-10 mb-12" data-aos="fade-up">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-blue-600">協賛</h2>
+            <div class="flex justify-center space-x-8">
+                <a href="https://uminohi.jp"><img class="object-contain h-48 w-full" src="https://ehime.uminohi.jp/wp-content/themes/ownbranch/assets/img/ogp.jpg" alt="日本財団海と日本project" loading="lazy"></a>
+                <a href="https://www.ivusa.com"><img class="object-contain h-48 w-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_ahd8ETjbuJGFKIePvnWUlH-L2RlvF0l2OQ&s" alt="NPO法人国際ボランティア学生協会" loading="lazy"></a>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-lg p-6 sm:p-8 md:p-10 mb-12" data-aos="fade-up">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-blue-600">お問い合わせ</h2>
+            <p class="text-gray-700 mb-4">お問い合わせはInstagramやXからお願いします</p>
+        </section>
+    </main>
+
+    <footer class="bg-gradient-to-r from-blue-500 to-teal-400 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-blue-200 transition duration-300">Instagram</a>
+                <a href="#" class="hover:text-blue-200 transition duration-300">X</a>
+                <a href="#" class="hover:text-blue-200 transition duration-300">Facebook</a>
+            </div>
+            <p>© 2024 Youth for the Blue</p>
+        </div>
+    </footer>
+
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = Array.from(document.querySelectorAll('.section'));
-  let currentSectionIndex = 0;
-  let isScrolling = false;
-  let touchStartY = 0;
+        // モバイルメニューの開閉制御
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('button');
+            const mobileMenu = document.querySelector('.lg\\:hidden.fixed');
+        
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+        // AOSの初期化
+        AOS.init({ duration: 1500, once: true });
 
-  function showSection(index) {
-    sections.forEach((section, i) => {
-      if (i < index) {
-        section.classList.add('hidden-up');
-        section.classList.remove('hidden-down');
-      } else if (i > index) {
-        section.classList.remove('hidden-up');
-        section.classList.add('hidden-down');
-      } else {
-        section.classList.remove('hidden-up', 'hidden-down');
-      }
-    });
-  }
+        const activityCards = [
+            {
+                imgSrc: "https://t4.ftcdn.net/jpg/06/33/57/61/360_F_633576105_HuOfQhNZMjJmarXonwz6zpENdPZ28IPz.jpg",
+                altText: "私たちの活動について",
+                title: "海洋ごみの現状",
+                description: "海洋ごみの約80%は街から流出しており、都市部に住む人たちとも無関係ではありません。",
+                detail: "index_1.html"
+            },
+            {
+                imgSrc: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                altText: "あなたにできること",
+                title: "あなたにできること",
+                description: "日常生活でできる海洋ごみ削減のアクションを紹介します。",
+                detail: "#"
+            },
+            {
+                imgSrc: "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                altText: "実施予定の活動",
+                title: "実施予定の活動",
+                description: "今後のビーチクリーンやワークショップなど、予定されている活動をチェック！",
+                detail: "#"
+            },
+            {
+                imgSrc: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                altText: "これまでの活動",
+                title: "これまでの活動",
+                description: "過去のイベントや成果を振り返り、私たちの軌跡をご覧ください。",
+                detail: "#"
+            }
+        ];
 
-  function handleScroll(delta) {
-    if (isScrolling) return;
-    isScrolling = true;
+        const activityCardsContainer = document.getElementById('activity-cards');
+        activityCards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.className = "bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105";
+            cardElement.setAttribute('data-aos', 'fade-up');
+            cardElement.innerHTML = `
+                <img src="${card.imgSrc}" alt="${card.altText}" class="w-full h-64 object-cover" loading="lazy">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-blue-600">${card.title}</h3>
+                    <p class="text-gray-600">${card.description}</p>
+                    <a href="${card.detail}" class="text-blue-600 hover:underline">詳細を見る</a>
+                </div>
+            `;
+            activityCardsContainer.appendChild(cardElement);
+        });
 
-    if (delta > 0 && currentSectionIndex < sections.length - 1) {
-      currentSectionIndex++;
-    } else if (delta < 0 && currentSectionIndex > 0) {
-      currentSectionIndex--;
-    }
-
-    showSection(currentSectionIndex);
-    setTimeout(() => {
-      isScrolling = false;
-    }, 500);
-  }
-
-  // マウスホイールイベント
-  window.addEventListener('wheel', (event) => {
-    handleScroll(event.deltaY);
-  });
-
-  // タッチイベント
-  window.addEventListener('touchstart', (event) => {
-    touchStartY = event.touches[0].clientY;
-  });
-
-  window.addEventListener('touchmove', (event) => {
-    const touchEndY = event.touches[0].clientY;
-    const delta = touchStartY - touchEndY;
-    if (Math.abs(delta) > 50) { // スワイプの閾値
-      handleScroll(delta);
-      touchStartY = touchEndY;
-    }
-  });
-
-  showSection(currentSectionIndex);
-});
-
-        // 水滴のエフェクトを制御するJavaScript
-        const rippleContainer = document.getElementById('ripple-container');
-
-        function createRipple(x, y) {
-            const drop = document.createElement('div');
-            drop.className = 'water-drop';
-            const size = Math.random() * 30 + 20;
-            drop.style.width = drop.style.height = `${size}px`;
-            drop.style.left = `${x}px`;
-            drop.style.top = `${y}px`;
-            rippleContainer.appendChild(drop);
-            setTimeout(() => {
-                drop.remove();
-            }, 3000);
-        }
-
-        function createRandomRipple() {
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            createRipple(x, y);
-        }
-
-        setInterval(createRandomRipple, 500);
-
-        document.addEventListener('click', (e) => {
-            const rect = rippleContainer.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            createRipple(x, y);
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle", stroke: { width: 0, color: "#000000" }, polygon: { nb_sides: 5 }, image: { src: "img/github.svg", width: 100, height: 100 } },
+                opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+                size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+            },
+            retina_detect: true
         });
     </script>
 </body>
